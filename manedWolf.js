@@ -1,7 +1,7 @@
 const animal = require("./animal.js")
 
 
-class manedWolf extends animal.Animal {
+class ManedWolf extends animal.Animal {
     constructor(name, happy, sad,) {
     //manedWolf specific properties here
         super (name, happy);
@@ -11,22 +11,18 @@ class manedWolf extends animal.Animal {
         this.extraProp = "Change your pet's water" 
 
     }
-    //manedWolf specific methods
-    fetchBall() {
-        this.health += 10;
-        this.hunger -= 10;
-        this.thirst -= 15;
-
-        console.log(`${this.name} would rather catch a Rabbit!`);
-        return this;
+    giveName(){
+        this.extraProp = `Play fetch with ${this.name}.` 
     }
-    chaseTail() {
+    //manedWolf specific methods
+    extra() {
         this.health += 10;
         this.hunger -= 10;
-        this.thirst -= 15;
-        console.log(`When ${this.name} chases his tail, they're very ${this.happy}!`);
+        this.thirst -= 10;
+
+        console.log(`${this.name} is getting some well-needed exercise!`);
         return this;
     }
 }
 
-module.exports = { manedWolf };
+module.exports = { ManedWolf };

@@ -8,14 +8,9 @@ class Otter extends animal.Animal{
         this.extraProp = `Let ${this.name} play in the pond`
     }
     extra(){
+        `${this.name} is having fun splashing around.`
         this.thirst -= 15
-        if(this.thirst < 0){
-            this.thirst = 0
-        }
         this.stress -= 15
-        if(this.stress < 0){
-            this.stress = 0
-        }
         this.hunger += 5
         return this;
     }

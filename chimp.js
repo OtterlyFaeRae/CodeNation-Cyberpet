@@ -8,17 +8,12 @@ class Chimpanzee extends animal.Animal {
     }
     //Chimpanzee specific methods
     giveName(){
-        this.extraProp = `Let ${this.name} go climbing` 
+        this.extraProp = `Let ${this.name} go climbing.` 
     }
-    swings() {
-        this.health += 10;
-        this.hunger -= 10;
-        console.log(`${this.name} thinks he's tarzan!`);
-        return this;
-    }
-    throwPoo() {
-        console.log(`When ${this.name} is throwing poo, at tourists, they are very ${this.happy}`);
-        this.health += 10;
+    extra() {
+        console.log(`${this.name} thinks they're tarzan!`)
+        this.stress -= 30;
+        this.hunger += 10;
         return this;
     }
 }

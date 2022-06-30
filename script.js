@@ -2,9 +2,10 @@
 const inquirer = require("inquirer");
 const otter = require("./otter");
 const chimp = require("./chimp");
+const pandaAnt = require("./pandaAnt");
 const poodleMoth = require("./poodleMoth");
 const manedWolf = require("./manedWolf");
-const pandaAnt = require("./pandaAnt");
+
 
 let pet;
 
@@ -13,31 +14,48 @@ const passTime = ()=>{
     if(pet.hunger > 100){
         pet.hunger = 100
         console.log(`${pet.name} is hungry!`)
-        pet.health -= 5
+        pet.health -= 10
     }
     pet.thirst += 5
     if(pet.thirst > 100){
         pet.thirst = 100
         console.log(`${pet.name} is thirsty!`)
-        pet.health -= 5
+        pet.health -= 10
     }
     pet.stress += 5
-    if(pet.stres > 100){
-        pet.thirst = 100
+    if(pet.stress > 100){
+        pet.stress = 100
         console.log(`${pet.name} is over-stressed!`)
-        pet.health -= 5
+        pet.health -= 10
     }
     pet.health -= 5
-    if(pet.health < 0){
+    if(pet.health <= 0){
         console.log(`${pet.name} was so unhealthy, they had to be taken back to the shelter!`)
         return;
+    } else if(pet.health < 20) {
+        console.log(`${pet.name} isn't looking so good. You might want to take them to see a vet.`)
+    }
+    if (pet.health > 100){
+        pet.health = 100
+        console.log(`${pet.name} is as healthy as can be!`)
+    } 
+    if (pet.hunger < 0) {
+        pet.hunger = 0
+        console.log(`${pet.name} is full.`)
+    } 
+    if (pet.thirst < 0) {
+        pet.thirst = 0
+        console.log(`${pet.name} doesn't want any more wanter.`)
+    } 
+    if (pet.stress < 0) {
+        pet.stress = 0
+        console.log(`${pet.name} is perfectly content.`)
     }
     menu()
 }
 
 // Start function
 async function start() {
-    console.log(`Start hit`)
     // Asks the player which kind of pet they'd like
     const { petType } = await inquirer.prompt(
         //First question object: gets pet type. Returns an object of appropriate pet type. 
@@ -47,12 +65,24 @@ async function start() {
         message:`Which kind of pet would you like?\n`,
         choices:[
             {
-                name: `otter`,
+                name: `Otter`,
                 value: new otter.Otter()
             },
             {
-                name:`chimp`,
+                name:`Chimp`,
                 value: new chimp.Chimpanzee()
+            },
+            {
+                name:`Panda ant`,
+                value: new pandaAnt.PandaAnt()
+            },
+            {
+                name:`Poodle moth`,
+                value: new poodleMoth.PoodleMoth()
+            },
+            {
+                name:`Maned wolf`,
+                value: new manedWolf.ManedWolf()
             }
         ]
     }
@@ -99,7 +129,7 @@ async function menu() {
                     value: `vet`
                 },
                 {
-                    name:`Check your pet's status`,
+                    name:`Check ${pet.name}'s status`,
                     value:`check`
                     
                 },

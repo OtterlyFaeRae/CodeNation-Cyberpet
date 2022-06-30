@@ -1,29 +1,21 @@
 const animal = require("./animal.js")
 
 
-class pandaAnt extends animal.Animal {
-    constructor(name, happy, sad,) {
-    //pandaAnt specific properties here
-        super (name, happy);
-        this.happy = happy;
-        this.sad = sad;
-
+class PandaAnt extends animal.Animal {
+    constructor() {
+        super ();
     }
-    //pandaAnt specific methods
-    burrows() {
-        this.health += 10;
-        this.hunger -= 10;
-        this.thirst -= 10;
-        console.log(`${this.name} loves to get down and dirty! `);
-        return this;
+    // 
+    giveName(){
+        this.extraProp = `Give ${this.name} their marbles to play with.` 
     }
-    rollsMarble() {
-        this.health += 10;
-        this.hunger -+ 10;
-        this.thirst -= 10;
-        onsole.log(`${this.name} is ${this.happy} when playing with there marbles.`);
+    extra() {
+        console.log(`${this.name} is having fun pushing their marbles around.`);
+        this.stress -= 30;
+        this.hunger += 5;
+        this.thirst += 5;
         return this;
     }
 }
 
-module.exports = { pandaAnt };
+module.exports = { PandaAnt };
